@@ -1,0 +1,14 @@
+machine:
+  java:
+    version:
+      oraclejdk8
+  environment:
+    TERM: dumb
+
+general:
+  branches:
+    only:
+      - master # only build/deploy from master
+  artifacts:
+    - "build/reports/tests" # preserve the generated HTML test reports
+
