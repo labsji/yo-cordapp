@@ -1,14 +1,17 @@
-machine:
-  java:
-    version:
-      oraclejdk8
-  environment:
-    TERM: dumb
+version: 2
+jobs:
+  build:
+    
+    working_directory: ~/yo-cordapp
 
-general:
-  branches:
-    only:
-      - master # only build/deploy from master
-  artifacts:
-    - "build/reports/tests" # preserve the generated HTML test reports
+    docker:
+      - image: circleci/openjdk:8-jdk-browsers
 
+    steps:
+
+      - checkout
+
+     
+      - run: ./gradlew deployNodes
+
+      
