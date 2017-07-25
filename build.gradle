@@ -87,7 +87,6 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
         javaParameters = true   // Useful for reflection.
     }
 }
-
 task deployNodes(type: net.corda.plugins.Cordform, dependsOn: ['build']) {
     directory "./build/nodes"
     networkMap "CN=Controller,O=R3,OU=corda,L=London,C=UK"
@@ -117,7 +116,17 @@ task deployNodes(type: net.corda.plugins.Cordform, dependsOn: ['build']) {
         rpcUsers = [[user: "user1", "password": "test", "permissions": []]]
     }
 }
+deployNodes.doLast {
+	println "Dockerizing nodes..."
+	new File('build/nodes').eachDir() { dir ->  
+	  println dir.getPath() +  " Dockerized!"  
+	  copy {
+	    from 'buildSrc/dockerize-node'
+	    into dir.getPath()
+          }
+        }  
 
+}
 idea {
     module {
         downloadJavadoc = true // defaults to false
