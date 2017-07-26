@@ -1,8 +1,8 @@
 #!/bin/bash
 
 export CORDA_HOST="${CORDA_HOST:-localhost}"
-export CORDA_PORT_P2P="${CORDA_PORT:-10002}"
-export CORDA_PORT_RPC="${CORDA_PORT:-10003}"
+export CORDA_PORT_P2P="${CORDA_PORT_P2P:-10002}"
+export CORDA_PORT_RPC="${CORDA_PORT_RPC:-10003}"
 export CORDA_LEGAL_NAME="${CORDA_LEGAL_NAME:-Corda Test Node}"
 export CORDA_ORG="${CORDA_ORG:-CordaTest}"
 export CORDA_ORG_UNIT="${CORDA_ORG_UNIT:-CordaTest}"
