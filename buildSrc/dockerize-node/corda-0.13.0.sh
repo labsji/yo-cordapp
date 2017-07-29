@@ -39,7 +39,9 @@ rpcUsers=[
 	}
 ]
 EOF
+tmux
+
+tmux new-session -d -s webserver 'java $JAVA_OPTIONS -jar /opt/corda/corda-webserver.jar >>/opt/corda/logs/web-output.log 2>&1'
 
 exec java $JAVA_OPTIONS -Dcapsule.jvm.args="$CAPSULE_ARGS" -jar /opt/corda/corda.jar >>/opt/corda/logs/output.log 2>&1
-exec java $JAVA_OPTIONS -jar /opt/corda/corda-webserver.jar >>/opt/corda/logs/web-output.log 2>&1
 
