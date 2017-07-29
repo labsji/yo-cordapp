@@ -18,6 +18,7 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0x219BD9C9
 RUN apt-get -qq update \
  && apt-get -y upgrade
 RUN apt-get -qqy install zulu-8 ntp
+RUN apt-get -qqy install tmux
 
 # Cleanup
 RUN apt-get clean \
