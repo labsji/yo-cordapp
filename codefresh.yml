@@ -4,6 +4,7 @@ steps:
   java-build:
     working_directory: ${{main_clone}}
     description: Building with gradle...
+    image: gradle:latest
     command:
       - ./gradlew deployNodes
   build:
