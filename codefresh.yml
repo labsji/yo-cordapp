@@ -6,7 +6,7 @@ steps:
     description: Building with gradle...
     image: gradle:latest
     command:
-      - ./gradlew tasks --stacktrace
+      - ./gradlew --debug --version -g build
   build:
     type: build
     dockerfile: build/nodes/Controller/Dockerfile
