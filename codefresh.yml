@@ -4,7 +4,7 @@ steps:
   java_build:
     working_directory: ${{main_clone}}
     description: Building with gradle...
-    image: gradle:latest
+    image: java:6-jdk
     command:
       - ./gradlew --debug --version -g ${{main_clone}/build} 
   build:
