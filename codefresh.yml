@@ -12,12 +12,6 @@ steps:
     dockerfile: build/nodes/Controller/Dockerfile
     image_name: cordapp/yo-cordapp
     tag: '${{CF_BRANCH}}'
-    
-  push:
-    type: push
-    candidate: ${{build}}
-    tag: ${{CF_BRANCH}}
-    registry: labsji
 
 
   deploy_to_kubernetes:
