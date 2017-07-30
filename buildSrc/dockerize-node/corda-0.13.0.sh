@@ -39,14 +39,14 @@ rpcUsers=[
 	}
 ]
 EOF
-if [ -z "$CORDA_NETMAP_ADDRESS" ]; then
-	cat >> node.conf << EOF
-	networkMapService : {
-	  address : "$CORDA_NETMAP_ADDRESS"
-	  legalName : "$CORDA_NETMAP_LEGALNAME"
-	}
-	EOF
-fi  
+if [[  ${CORDA_NETMAP_ADDRESS+x} ]]; then
+        cat<< EOF  >> node.conf
+        networkMapService : {
+          address : "$CORDA_NETMAP_ADDRESS"
+          legalName : "$CORDA_NETMAP_LEGALNAME"
+        }
+EOF
+fi
 
 tmux
 
