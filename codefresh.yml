@@ -2,7 +2,8 @@ version: '1.0'
 
 steps:
   java-build:
-    type: build
+    working_directory: ${{main_clone}}
+    description: Building with gradle...
     command:
       - ./gradlew deployNodes
   build:
