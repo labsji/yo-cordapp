@@ -24,7 +24,7 @@ h2port : 11000
 myLegalName : "CN=$CORDA_LEGAL_NAME,O=$CORDA_ORG,OU=$CORDA_ORG_UNIT,L=$CORDA_CITY,C=$CORDA_COUNTRY, E=$CORDA_EMAIL"
 keyStorePassword : "cordacadevpass"
 trustStorePassword : "trustpass"
-extraAdvertisedServiceIds: [ "" ]
+extraAdvertisedServiceIds: [ "$CORDA_EXTRA_SERVICE" ]
 useHTTPS : false
 devMode : true
 rpcUsers=[
@@ -39,6 +39,15 @@ rpcUsers=[
 	}
 ]
 EOF
+if [ -z "$CORDA_NETMAP_ADDRESS" ]; then
+	cat >> node.conf << EOF
+	networkMapService : {
+	  address : "$CORDA_NETMAP_ADDRESS"
+	  legalName : "$CORDA_NETMAP_LEGALNAME"
+	}
+	EOF
+fi  
+
 tmux
 
 tmux new-session -d -s webserver 'java $JAVA_OPTIONS -jar /opt/corda/corda-webserver.jar >>/opt/corda/logs/web-output.log 2>&1'
