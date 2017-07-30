@@ -1,7 +1,7 @@
 version: '1.0'
 
 steps:
-  java-build:
+  java_build:
     working_directory: ${{main_clone}}
     description: Building with gradle...
     image: gradle:latest
@@ -17,10 +17,12 @@ steps:
     type: push
     candidate: ${{build}}
     tag: ${{CF_BRANCH}}
+    registry: labsji
 
-  deploy-to-kubernetes:
+
+  deploy_to_kubernetes:
     image: codefresh/cf-deploy-kubernetes:latest
-    working-directory: ${{main_clone}}
+    working_directory: ${{main_clone}}
     commands:
       - /cf-deploy-kubernetes deployment.yml.tmpl
     environment:
