@@ -1,0 +1,27 @@
+version: '1.0'
+
+steps:
+  java-build:
+    type: build
+    command:
+      - ./gradlew deployNodes
+  build:
+    type: build
+    dockerfile: build/nodes/Controller/Dockerfile
+    image_name: cordapp/yo-cordapp
+    tag: '${{CF_BRANCH}}'
+    
+  push:
+    type: push
+    candidate: ${{build}}
+    tag: ${{CF_BRANCH}}
+
+  deploy-to-kubernetes:
+    image: codefresh/cf-deploy-kubernetes:latest
+    working-directory: ${{main_clone}}
+    commands:
+      - /cf-deploy-kubernetes deployment.yml.tmpl
+    environment:
+      - KUBERNETES_USER=${{KUBERNETES_USER}}
+      - KUBERNETES_PASSWORD=${{KUBERNETES_PASSWORD}}
+      - KUBERNETES_SERVER=${{KUBERNETES_SERVER}}

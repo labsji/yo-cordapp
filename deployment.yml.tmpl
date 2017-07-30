@@ -1,0 +1,74 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: yo-cordapp-controller
+  labels:
+    app: yo-cordapp
+    role: controller
+spec:
+  type : LoadBalancer
+  ports:
+    # the port that this service should serve on
+  - name: p2p
+    protocol: TCP
+    port: 10011
+    targetPort: 10011
+  - name: rpc
+    protocol: TCP
+    port: 10012
+    targetPort: 10012
+  - name: web
+    protocol: TCP
+    port: 10013
+    targetPort: 10013
+  selector:
+    app: yo-cordapp
+    role: controller
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: yo-controller
+  labels:
+    app: yo-cordapp
+    role: controller
+spec:
+  replicas: 1
+  template:
+    metadata:
+      annotations:
+        revision: "{{CF_REVISION}}"
+      labels:
+        app: yo-cordapp
+        role: controller
+    spec:
+      containers:
+        - name: controller
+          image: "cordapp/yo-cordapp:{{CF_BRANCH}}"
+          ports:
+              # the port that this service should serve on
+           - containerPort: 10011
+           - containerPort: 10012
+           - containerPort: 10013
+          env:
+            - name: "CORDA_LEGAL_NAME"
+              value: "Yo and Yo Co"
+            - name: "CORDA_ORG"
+              value: "Information"
+            - name: "CORDA_ORG_UNIT"
+              value: "Reachout"
+            - name: "CORDA_COUNTRY"
+              value: "IN"
+            - name: "CORDA_CITY"
+              value: "Chennai"
+            - name: "CORDA_HOST"
+              value: "yo-cordapp-controller.default"
+            - name: "CORDA_PORT_P2P"
+              value: "10011"
+            - name: "CORDA_PORT_RPC"
+              value: "10012"
+            - name: "CORDA_PORT_WEB"
+              value: "10013"
+            - name: "CORDA_EXTRA_SERVICE"
+              value: "net.corda.notary.validating"
+
