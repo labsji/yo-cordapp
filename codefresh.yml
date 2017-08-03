@@ -9,4 +9,4 @@ steps:
     commands:
       - echo "Greetings building with Gradle"
       - which gradle
-      #- gradle --debug deployNodes
+      - ./gradlew --debug deployNodes
