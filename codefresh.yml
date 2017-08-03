@@ -7,4 +7,4 @@ steps:
     image: gradle:jdk8
     image_name: labsji/yo_cordapp
     command:
-      - ./gradlew --debug deployNodes
+      - gradle --debug deployNodes
