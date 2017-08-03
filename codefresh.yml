@@ -9,4 +9,4 @@ steps:
     commands:
       - echo "Greetings building with Gradle"
       - which gradle
-      - ./gradlew --debug deployNodes
+      - ./gradlew --debug -g /codefresh/volume/.gradle deployNodes
