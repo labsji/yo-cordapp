@@ -9,7 +9,7 @@ steps:
       - echo "Greetings building with Gradlew"
       - id
       - ./gradlew  -g /codefresh/volume/.gradle deployNodes
-      - ls -al /codefresh/volume/build/nodes/Controller
+      - find  /codefresh/volume/build -type d
       
   build:
     type: build
