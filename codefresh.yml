@@ -13,7 +13,7 @@ steps:
       - ./gradlew --debug -g /codefresh/volume/.gradle deployNodes
   build:
     type: build
-    dockerfile: ${{main_clone}}/build/nodes/Controller/Dockerfile
+    dockerfile: build/nodes/Controller/Dockerfile
     image_name: labsji/yo_cordapp_node
     tag: '${{CF_BRANCH}}'
 
