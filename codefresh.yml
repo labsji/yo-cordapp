@@ -14,7 +14,7 @@ steps:
   build:
     type: build
     working_directory: build/nodes/Controller
-    dockerfile: build/nodes/Controller/Dockerfile
+    dockerfile: Dockerfile
     image_name: labsji/yo_cordapp_node
     tag: '${{CF_BRANCH}}'
 
