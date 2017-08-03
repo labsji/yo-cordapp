@@ -5,7 +5,6 @@ steps:
     working_directory: ${{main_clone}}
     description: Building with gradle...
     image: openjdk:8-jdk
-    image_name: labsji/yo_cordapp
     commands:
       - echo "Greetings building with Gradlew"
       - id
