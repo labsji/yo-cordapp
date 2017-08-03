@@ -8,19 +8,3 @@ steps:
     image: gradle:jdk8
     command:
       - ./gradlew --debug deployNodes
-  build:
-    type: build
-    dockerfile: build/nodes/Controller/Dockerfile
-    image_name: cordapp/yo-cordapp
-    tag: '${{CF_BRANCH}}'
-
-
-  deploy_to_kubernetes:
-    image: codefresh/cf-deploy-kubernetes:latest
-    working_directory: ${{main_clone}}
-    commands:
-      - /cf-deploy-kubernetes deployment.yml.tmpl
-    environment:
-      - KUBERNETES_USER=${{KUBERNETES_USER}}
-      - KUBERNETES_PASSWORD=${{KUBERNETES_PASSWORD}}
-      - KUBERNETES_SERVER=${{KUBERNETES_SERVER}}
