@@ -6,5 +6,7 @@ steps:
     description: Building with gradle...
     image: gradle:jdk8
     image_name: labsji/yo_cordapp
-    command:
-      - gradle --debug deployNodes
+    commands:
+      - echo "Greetings building with Gradle"
+      - which gradle
+      #- gradle --debug deployNodes
