@@ -8,7 +8,7 @@ steps:
     commands:
       - echo "Greetings building with Gradlew"
       - id
-      - ./gradlew --debug -g /codefresh/volume/.gradle deployNodes
+      - ./gradlew  -g /codefresh/volume/.gradle deployNodes
       - ls -al /codefresh/volume/build/nodes/Controller
       
   build:
