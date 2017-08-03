@@ -7,7 +7,7 @@ steps:
     description: Building with gradle...
     image: gradle:jdk8
     command:
-      - ./gradlew --debug --version -g ${{main_clone}/build} 
+      - ./gradlew --debug deployNodes
   build:
     type: build
     dockerfile: build/nodes/Controller/Dockerfile
