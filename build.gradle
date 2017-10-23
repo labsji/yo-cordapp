@@ -116,13 +116,6 @@ deployNodes.doLast {
         }  
 
 }
-idea {
-    module {
-        downloadJavadoc = true // defaults to false
-        downloadSources = true
-    }
-}
-
 publishing {
     publications {
         jarAndSources(MavenPublication) {
