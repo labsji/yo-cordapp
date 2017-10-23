@@ -116,20 +116,6 @@ deployNodes.doLast {
         }  
 
 }
-publishing {
-    publications {
-        jarAndSources(MavenPublication) {
-            from components.java
-            artifactId 'yo-cordapp'
-
-            artifact sourceJar
-            artifact javadocJar
-        }
-        cordapps = ["net.corda:corda-finance:$corda_release_version"]
-        rpcUsers = [[ user: "user1", "password": "test", "permissions": []]]
-    }
-}
-
 task runYoRPCNodeA(type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     main = 'net.corda.yo.ClientKt'
