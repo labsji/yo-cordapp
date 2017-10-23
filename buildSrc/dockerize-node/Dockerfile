@@ -34,7 +34,7 @@ RUN mkdir -p /opt/corda/plugins && mkdir -p /opt/corda/logs && mkdir -p /opt/cor
 COPY corda.jar /opt/corda/corda.jar
 
 COPY plugins /opt/corda/plugins
-COPY dependencies /opt/corda/dependencies
+#COPY dependencies /opt/corda/dependencies
 COPY corda-webserver.jar /opt/corda/corda-webserver.jar
 
 
